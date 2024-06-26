@@ -32,14 +32,14 @@ list_of_files =[
 
 for file_path in list_of_files:
     filepath = Path(file_path) #Instead of using os.path.join() , we use Path fucntion, so that it will modify path directory based on Oprating System.
-    filedir, filename = os.path.split(filepath)
+    filedir, filename = os.path.split(filepath)#  #Seperating files and folders , Split function seperates into head and tail, Returns array of [(head, tail)]
     if filedir != "":
         os.makedirs(filedir, exist_ok=True)
         logging.info(f"Creating directory:{filedir} for file {filename}")
 
-    if(not os.path.exists(filepath)) or (os.path.getsize(filepath)): #getsize , returns the file content size in int
+    if(not os.path.exists(filepath)) or (os.path.getsize(filepath)):
         with open(filepath, 'w') as f:
-            pass #Write nothing
+            pass 
             logging.info(f"Creating empty file: {filepath}")
     else:
         logging.info(f"File already exists: {filepath}")
